@@ -73,8 +73,8 @@ output_df <- data.frame(
 )
 
 # Save results
-# output_file <- file.path(args$output_dir, paste0(args$name, "_limma_results.csv"))
-output_file <- args$output_dir
+output_file <- file.path(args$output_dir, paste0(args$name, "_limma_results.csv"))
+# output_file <- args$output_dir
 write.csv(output_df, output_file, row.names=FALSE)
 
 
