@@ -58,7 +58,7 @@ limma_results <- topTable(fit3, coef = 1, adjust.method="BH", number=Inf, sort.b
 # manipulate the limma table to create the desired output format
 limma_results_output <- limma_results[,c("logFC", "P.Value")]
 names(limma_results_output)[names(limma_results_output)=="logFC"] <- "effect_size"
-names(limma_results_output)[names(limma_results_output)=="P.Value"] <- "P_value"
+names(limma_results_output)[names(limma_results_output)=="P.Value"] <- "P.Value"
 # move rownames to a column named "ID"
 limma_results_output$ID <- rownames(limma_results)
 # remove row names
