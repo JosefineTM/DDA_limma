@@ -24,9 +24,9 @@ option_list <- list(
 parser <- OptionParser(option_list = option_list)
 args <- parse_args(parser)
 
-label_samples_df <- read.csv(args$label_samples)
-label_samples_df <- label_samples_df[ , !grepl("^X", names(label_samples_df)) ]
-colnames(label_samples_df) <- c("Sample_ID", "Group_Label")
+label_samples_df <- read.csv(args$label_samples, header= FALSE)
+#label_samples_df <- label_samples_df[ , !grepl("^X", names(label_samples_df)) ]
+#colnames(label_samples_df) <- c("Sample_ID", "Group_Label")
 
 # load the abundance matrix
 abundance_matrix <- read.csv(args$dataset, check.names = FALSE, stringsAsFactors = FALSE)
@@ -49,7 +49,6 @@ contrast_exp <- paste0(design_cols[2], " - ", design_cols[1])
 contrasts_matrix <- makeContrasts(contrasts = contrast_exp, levels = design)
 # fit the contrast matrix
 fit2 <- contrasts.fit(fit, contrasts_matrix)
-
 # empirical Bayes moderated t-test
 fit3 <- eBayes(fit2, robust=TRUE)
 
@@ -71,4 +70,5 @@ head(limma_results_output)
 if (!dir.exists(args$output_dir)) {
   dir.create(args$output_dir)
 }
-write.csv(limma_results_output, file = file.path(args$output_dir, args$out_file_name))
+output_filename <- paste0(args$out_file_name,"_dataset.csv")
+write.csv(limma_results_output, file = file.path(args$output_dir, output_filename))
