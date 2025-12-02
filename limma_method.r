@@ -70,5 +70,5 @@ head(limma_results_output)
 if (!dir.exists(args$output_dir)) {
   dir.create(args$output_dir)
 }
-output_filename <- paste0(args$out_file_name,"_dataset.csv")
+output_filename <- paste0(args$out_file_name,"_results.csv")
 write.csv(limma_results_output, file = file.path(args$output_dir, output_filename))
