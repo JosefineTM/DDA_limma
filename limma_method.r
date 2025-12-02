@@ -67,11 +67,18 @@ limma_results_output <- limma_results_output[, c("ID", setdiff(names(limma_resul
 head(limma_results_output)
 # save the output file
 # create the directory if it doesn't exist
+args$output_dir <- normalizePath(args$output_dir, mustWork = FALSE)
 if (!dir.exists(args$output_dir)) {
   dir.create(args$output_dir,recursive = TRUE, showWarnings = FALSE)
 }
 #output_filename <- paste0(args$out_file_name,"_results.csv")
 #write.csv(limma_results_output, file = file.path(args$output_dir, output_filename))
 print(args)
+args$data.matrix
+args$data.true_labels
+args$output_dir
+args$name
+#output_file
 output_filename <- paste0(args[["name"]], "_results.csv")
 write.csv(limma_results_output, file=file.path(args[["output_dir"]], output_filename))
+print(paste("Results written to:", output_filename))
