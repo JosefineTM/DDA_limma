@@ -18,7 +18,7 @@ option_list <- list(
   make_option(c("-d", "--data.matrix")),
   make_option(c("-l", "--data.true_labels")),
   make_option(c("-o", "--output_dir")), 
-  make_option(c("-n", "--out_file_name")) 
+  make_option(c("-n", "--name")) 
 )
 
 parser <- OptionParser(option_list = option_list)
@@ -73,5 +73,5 @@ if (!dir.exists(args$output_dir)) {
 #output_filename <- paste0(args$out_file_name,"_results.csv")
 #write.csv(limma_results_output, file = file.path(args$output_dir, output_filename))
 print(args)
-output_filename <- paste0(args[["out_file_name"]], "_results.csv")
+output_filename <- paste0(args[["name"]], "_results.csv")
 write.csv(limma_results_output, file=file.path(args[["output_dir"]], output_filename))
