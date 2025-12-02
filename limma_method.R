@@ -82,3 +82,5 @@ args$name
 output_filename <- paste0(args[["name"]], "_results.csv")
 write.csv(limma_results_output, file=file.path(args[["output_dir"]], output_filename))
 print(paste("Results written to:", output_filename))
+print(paste("Output directory:", args$output_dir))
+print(paste("Output file:", file.path(args$output_dir, output_filename)))
