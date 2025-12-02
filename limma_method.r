@@ -15,8 +15,8 @@ library(tibble)
 library(optparse)
 
 option_list <- list(
-  make_option(c("-d", "--dataset")),
-  make_option(c("-l", "--label_samples")),
+  make_option(c("-d", "--data.matrix")),
+  make_option(c("-l", "--data.true_labels")),
   make_option(c("-o", "--output_dir")), 
   make_option(c("-n", "--out_file_name")) 
 )
@@ -24,12 +24,12 @@ option_list <- list(
 parser <- OptionParser(option_list = option_list)
 args <- parse_args(parser)
 
-label_samples_df <- read.csv(args$label_samples, header= FALSE)
+label_samples_df <- read.csv(args$data.true_labels, header= FALSE)
 #label_samples_df <- label_samples_df[ , !grepl("^X", names(label_samples_df)) ]
 #colnames(label_samples_df) <- c("Sample_ID", "Group_Label")
 
 # load the abundance matrix
-abundance_matrix <- read.csv(args$dataset, check.names = FALSE, stringsAsFactors = FALSE)
+abundance_matrix <- read.csv(args$data.matrix, check.names = FALSE, stringsAsFactors = FALSE)
 rownames(abundance_matrix) <- make.unique(abundance_matrix[[1]])
 abundance_matrix[[1]] <- NULL
 #head(abundance_matrix,2)
