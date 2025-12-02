@@ -1,12 +1,12 @@
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 # TO REMOVE ONCE WE SETUP THE ENVIRONMENT
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+    #install.packages("BiocManager")
 
-BiocManager::install("limma")
-install.packages("dplyr")
-install.packages("tibble")
-install.packages("optparse")
+#BiocManager::install("limma")
+#install.packages("dplyr")
+#install.packages("tibble")
+#install.packages("optparse")
 
 library(BiocManager)
 library(limma)
