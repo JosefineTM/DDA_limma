@@ -61,6 +61,10 @@ names(limma_results_output)[names(limma_results_output)=="logFC"] <- "effect_siz
 names(limma_results_output)[names(limma_results_output)=="P.Value"] <- "P.Value"
 # move rownames to a column named "ID"
 limma_results_output$ID <- rownames(limma_results)
+# Strip numeric suffixes added by make.unique
+limma_results_output$ID <- sub("\\.\\d+$", "", rownames(limma_results_output))
+rownames(limma_results_output) <- NULL
+
 # remove row names
 rownames(limma_results_output) <- NULL
 limma_results_output <- limma_results_output[, c("ID", setdiff(names(limma_results_output), "ID"))]
